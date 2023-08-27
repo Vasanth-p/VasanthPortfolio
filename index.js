@@ -213,8 +213,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    const preloaderSection = document.querySelector(".preloader");
     const dialog = document.getElementById("dialog");
+
+    // Detect the end of the slide animation
+    const slide = document.querySelector(".slide");
+    const slideAnimationDuration = 2950; // Duration of the slide animation in milliseconds
 
     const options = {
         root: null,
@@ -225,18 +228,18 @@ document.addEventListener("DOMContentLoaded", function() {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // The preloader section is fully visible, start the time delay
+                // The slide animation has completed, start the time delay
                 setTimeout(() => {
                     dialog.style.display = "block"; // Show the dialog
-                }, 2000); // 20 seconds in milliseconds
+                }, 18000); // 18 seconds in milliseconds
             } else {
-                // The preloader section is not visible, hide the dialog
+                // The slide animation is still in progress, hide the dialog
                 dialog.style.display = "none";
             }
         });
     }, options);
 
-    observer.observe(preloaderSection);
+    observer.observe(slide);
 
     const closeButton = document.getElementById("closeButton");
     closeButton.addEventListener("click", function() {
@@ -248,6 +251,3 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = "rating.html"; // Replace with actual feedback page URL
     });
 });
-
-
-
