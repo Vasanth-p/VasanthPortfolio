@@ -1,0 +1,513 @@
+html,
+body {
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+html::-webkit-scrollbar {
+    width: 0.6vw;
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: #48b14d;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+html::-webkit-scrollbar-track {
+    background-color: #cbcbcb;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#particles-js {
+    position:absolute;
+    width:100vw;
+    height:100vh;
+}
+/* navbar */
+.navbar {
+
+    background: transparent;
+    position: sticky;
+    top: 0;
+    color: white;
+    transition: background-color 0.5s;
+}
+
+.fa-bars {
+    color: #686868;
+}
+
+
+
+.navbar.scrolled {
+    background: rgba(48, 47, 47, 0.3);
+    color: black;
+    backdrop-filter: blur(8px);
+
+}
+
+
+.nav-item a {
+    font-weight: 600;
+    padding: 0px 20px !important;
+    color: inherit !important;
+    font-size: 13px !important;
+    float: right;
+}
+
+
+.nav-item a:hover {
+    color: #48B14D !important;
+
+    border-radius: 25px;
+    transition: 0.5s;
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width: 996px) {
+    .nav-item a {
+        padding: 7px !important;
+    }
+
+    .img-about {
+        width: 100% !important;
+        height: auto;
+       
+    }
+
+    .navbar {
+        backdrop-filter: blur(3px);
+    }
+
+    .theme {
+        margin-top: 2.5%;
+    }
+
+    .fa-moon {
+        color: #808080 !important;
+
+    }
+
+    .gallery::-webkit-scrollbar {
+        height: 5px !important;
+    }
+
+    .horizontal-gallery {
+        margin-top: 4% !important;
+    }
+
+}
+
+
+.navbar-brand {
+    font-size: 22px !important;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: inherit !important;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+/* intro  */
+.intro {
+    height: 100vh;
+    background-image: url(https://images.unsplash.com/photo-1506452305024-9d3f02d1c9b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 100%;
+    z-index: -1;
+    background-position: bottom;
+
+}
+
+
+.header-img {
+    width: 160px;
+    border-radius: 50%;
+    border: 5px solid white;
+
+}
+
+.fa-angle-down {
+    color: rgb(255, 255, 255);
+    opacity: 0.8;
+    animation: slide 0.9s ease-in-out infinite;
+}
+
+
+@keyframes slide {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(0px, 10px);
+    }
+}
+
+
+.fa-brands {
+    transition: 0.4s;
+}
+
+.fa-brands:hover {
+    color: #48B14D;
+    scale: 1.5 !important;
+}
+
+
+.img-about {
+    aspect-ratio: 1;
+    width: 75%;
+    height: 600px;
+    border-radius: 10px;
+}
+
+
+.btn:hover {
+    background-color: #48B14D !important;
+    transform: scale(1.1);
+
+}
+
+.btn {
+    transition: 0.4s !important;
+}
+
+
+#education {
+    background-color: #F2F2F2;
+}
+
+
+/* skill section */
+.progress {
+    width: 100%;
+    height: 6px !important;
+    background-color: rgb(104, 104, 104) !important;
+
+
+}
+
+.progress-bar {
+    width: 0%;
+    position: relative;
+    height: 100%;
+    background-color: #48B14D !important;
+    transition: 1s all !important;
+    opacity: 1 !important;
+}
+
+.hp {
+    transition: 1s all !important;
+    opacity: 0 !important;
+    width: 0 !important;
+}
+
+
+/* project section */
+.prjct {
+
+    background-color: black;
+    position: relative;
+    z-index: 1;
+    aspect-ratio: 1000/620;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid gray;
+    cursor: pointer;
+
+}
+
+
+.prjct img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -1;
+
+}
+
+.prjct .child {
+    aspect-ratio: 1000/620;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.5);
+    color: white;
+    backdrop-filter: blur(9px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    scale: 0;
+    transition: 0.4s ease-in-out;
+    opacity: 0;
+
+
+}
+
+.prjct:hover .child {
+    scale: 1;
+    opacity: 1;
+}
+
+.prjct .child a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.prjct .child a:hover {
+    color: #48B14D;
+    scale: 1.05;
+    transition: 0.2s;
+}
+
+
+#contact,
+#projects,
+#services {
+    background-color: #F2F2F2;
+}
+
+#hire .btn {
+    width: 160px;
+    height: 60px;
+
+}
+
+
+/* gallery */
+.gallery img {
+    width: 60%;
+}
+
+.gallery {
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    transition: 0.5s;
+}
+
+.gallery::-webkit-scrollbar {
+    height: 8px !important;
+}
+
+.gallery::-webkit-scrollbar-thumb {
+    background-color: #48b14d;
+    border-radius: 10px;
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); */
+}
+
+.gallery::-webkit-scrollbar-track {
+    background-color: #cbcbcb;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.gallery .horizontal-gallery {
+    display: inline;
+}
+
+
+.potrait {
+    width: 33.75% !important;
+}
+
+#education h2,
+#skills h2,
+#contact h2,
+#hire h2,
+#services h2,
+#projects h2,
+#gallery h1 {
+    letter-spacing: 3px;
+}
+
+
+/* form focus off */
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+[type=text].form-control:focus,
+[type=password].form-control:focus,
+[type=email].form-control:focus,
+[type=tel].form-control:focus,
+[contenteditable].form-control:focus {
+    box-shadow: none !important;
+    outline: none !important;
+    border-color: #eee !important;
+}
+
+
+/* darkmode */
+:root {
+    /* darkmode */
+    --bg-primary-dark: #272a2d;
+    --bg-secondary-dark: rgb(46, 46, 48);
+    --text-dark: white;
+    --icon-dark: white;
+    --bg-tertiary: #48B14D;
+}
+
+
+/* darkmode class */
+#about.dark,
+#skills.dark,
+#hire.dark,
+#gallery.dark,
+#FOOTER.dark {
+    background-color: var(--bg-primary-dark);
+    color: var(--text-dark);
+}
+
+
+#education.dark2,
+#services.dark2,
+#projects.dark2,
+#contact.dark2 {
+    background-color: var(--bg-secondary-dark);
+    color: var(--text-dark);
+}
+
+
+#navbar.dark {
+    color: white !important;
+}
+
+/* dark light toggle */
+
+.fa-moon {
+    color: #6e6e6e;
+}
+
+.fa-sun {
+    color: #dedede;
+}
+.col-lg-3 a {
+    text-decoration: none;
+    color: #686868;
+}
+#scrollToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+#scrollToTop a {
+    background-color: #3b3a3a;
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 50px;
+    text-decoration: none;
+    
+}
+#scrollToTop a:active {
+    background-color: #48B14D;
+}
+
+#scrollToTop a i {
+    font-size: 20px;
+    
+}
+
+#scrollToTop.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Dialog box styles */
+.dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #272a2d;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    z-index: 1000;
+    width: 250px;
+}
+
+.dialog p {
+    font-size: 20px;
+    margin-bottom: 10px;
+    height: auto;
+    
+}
+
+.dialog .rateButton {
+    padding: 10px 20px;
+    border: none;
+    background-color: #48B14D;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.closeButton {
+    position: absolute;
+    top: 1px;
+    right: 3px;
+    font-size: 27px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+
+/* Media query for screens up to 768px wide */
+@media (max-width: 768px) {
+    .dialog {
+        padding: 10px;
+        height: auto;
+        width: 250px;
+    }
+    
+    .dialog p {
+        font-size: 18px;
+    }
+    
+    .dialog .rateButton {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .closeButton {
+        font-size: 20px;
+        top: 5px;
+        right: 5px;
+    }
+}
+
+
+

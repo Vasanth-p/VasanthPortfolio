@@ -1,0 +1,117 @@
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  z-index: 9999999;
+  transition: 0.5s ease-out;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preloader-deactivate {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.slide {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  z-index: 9999991;
+  transition: 0.5s ease-out;
+}
+
+.slide1 {
+  position: absolute;
+  background: black;
+  height: 100%;
+  width: 50%;
+  left: 0;
+  top: 0;
+  transition: 1s ease-out;
+}
+
+.slide2 {
+  position: absolute;
+  background: black;
+  height: 100%;
+  width: 50%;
+  right: 0;
+  top: 0;
+  transition: 1s ease-out;
+}
+
+.slide-deactivate .slide1 {
+  left: -50%;
+}
+
+.slide-deactivate .slide2 {
+  right: -50%;
+}
+
+.slide-deactivate {
+  pointer-events: none;
+}
+
+svg.tea {
+  --secondary: #48b14d;
+  transform: scale(2);
+}
+
+svg.tea #teabag {
+  transform-origin: top center;
+  transform: rotate(3deg);
+  animation: swing 1s ease-in-out infinite;
+}
+
+svg.tea #steamL {
+  stroke-dasharray: 13;
+  stroke-dashoffset: 13;
+  animation: steamLarge 1s ease-in-out infinite;
+}
+
+svg.tea #steamR {
+  stroke-dasharray: 9;
+  stroke-dashoffset: 9;
+  animation: steamSmall 1s ease-in-out infinite;
+}
+
+@keyframes swing {
+  50% {
+      transform: rotate(-3deg);
+  }
+}
+
+@keyframes steamLarge {
+  0% {
+      stroke-dashoffset: 13;
+      opacity: 1;
+  }
+  100% {
+      stroke-dashoffset: 39;
+      opacity: 0;
+  }
+}
+
+@keyframes steamSmall {
+  10% {
+      stroke-dashoffset: 9;
+      opacity: 1;
+  }
+  80% {
+      stroke-dashoffset: 27;
+      opacity: 0;
+  }
+  100% {
+      stroke-dashoffset: 27;
+      opacity: 0;
+  }
+}
