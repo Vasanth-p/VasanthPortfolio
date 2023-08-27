@@ -213,41 +213,46 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    const dialog = document.getElementById("dialog");
+        const dialog = document.getElementById("dialog");
 
-    // Detect the end of the slide animation
-    const slide = document.querySelector(".slide");
-    const slideAnimationDuration = 2950; // Duration of the slide animation in milliseconds
+        function showDialog() {
+            // Show the dialog box when called
+            dialog.style.display = "block";
+        }
 
-    const options = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 1.0
-    };
+        function hideDialog() {
+            // Hide the dialog box when called
+            dialog.style.display = "none";
+            closeButtonClicked = true; // Set the flag to prevent reappearing
+        }
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // The slide animation has completed, start the time delay
-                setTimeout(() => {
-                    dialog.style.display = "block"; // Show the dialog
-                }, 18000); // 18 seconds in milliseconds
-            } else {
-                // The slide animation is still in progress, hide the dialog
-                dialog.style.display = "none";
-            }
+        const closeButton = document.getElementById("closeButton");
+        closeButton.addEventListener("click", function() {
+            hideDialog();
         });
-    }, options);
 
-    observer.observe(slide);
+        const rateButton = document.getElementById("rateButton");
+        rateButton.addEventListener("click", function() {
+            window.location.href = "rating.html"; // Replace with actual feedback page URL
+        });
 
-    const closeButton = document.getElementById("closeButton");
-    closeButton.addEventListener("click", function() {
-        dialog.style.display = "none"; // Hide the dialog
+        // Once the user interacts with the close button, prevent the dialog from reappearing
+        let closeButtonClicked = false;
+
+        const projectsSection = document.getElementById("projects");
+        const options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0 // Trigger the callback when any part of the "Projects" section enters the viewport
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !closeButtonClicked) {
+                    showDialog();
+                }
+            });
+        }, options);
+
+        observer.observe(projectsSection);
     });
-
-    const rateButton = document.getElementById("rateButton");
-    rateButton.addEventListener("click", function() {
-        window.location.href = "rating.html"; // Replace with actual feedback page URL
-    });
-});
