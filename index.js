@@ -200,22 +200,6 @@ document.getElementById("submit").addEventListener("click", function() {
 });
 
 
-
-// ... Your existing JavaScript code ...
-
-// After your existing code
-document.addEventListener("DOMContentLoaded", function() {
-    setTimeout(function() {
-        const dialog = document.getElementById('dialog');
-        dialog.style.display = 'block';
-
-        const rateButton = document.getElementById('rateButton');
-        rateButton.addEventListener('click', function() {
-            window.location.href = 'rating.html'; // Replace 'rating.html' with your actual feedback page URL
-        });
-    }, 20000); // 20 seconds in milliseconds
-});
-
 document.addEventListener("DOMContentLoaded", function() {
     // ... Your existing setTimeout code ...
 
@@ -225,6 +209,43 @@ document.addEventListener("DOMContentLoaded", function() {
 
     closeButton.addEventListener('click', function() {
         dialog.style.display = 'none';
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const preloaderSection = document.querySelector(".preloader");
+    const dialog = document.getElementById("dialog");
+
+    const options = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 1.0
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // The preloader section is fully visible, start the time delay
+                setTimeout(() => {
+                    dialog.style.display = "block"; // Show the dialog
+                }, 15000); // 15 seconds in milliseconds
+            } else {
+                // The preloader section is not visible, hide the dialog
+                dialog.style.display = "none";
+            }
+        });
+    }, options);
+
+    observer.observe(preloaderSection);
+
+    const closeButton = document.getElementById("closeButton");
+    closeButton.addEventListener("click", function() {
+        dialog.style.display = "none"; // Hide the dialog
+    });
+
+    const rateButton = document.getElementById("rateButton");
+    rateButton.addEventListener("click", function() {
+        window.location.href = "rating.html"; // Replace with actual feedback page URL
     });
 });
 
