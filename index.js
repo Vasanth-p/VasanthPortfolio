@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 // The preloader section is fully visible, start the time delay
                 setTimeout(() => {
                     dialog.style.display = "block"; // Show the dialog
-                }, 15000); // 15 seconds in milliseconds
+                }, 2000); // 20 seconds in milliseconds
             } else {
                 // The preloader section is not visible, hide the dialog
                 dialog.style.display = "none";
