@@ -263,10 +263,14 @@
     <script>
         // JavaScript scripts
         
-        const csvUrl = 'https://docs.google.com/spreadsheets/d/1anKmGnVu7y-XkKCI-fI0hEsG_KJwrg8-lBvpV2GETg8/pub?output=csv';
+        // JavaScript scripts
+
+const csvUrl = 'https://docs.google.com/spreadsheets/d/1anKmGnVu7y-XkKCI-fI0hEsG_KJwrg8-lBvpV2GETg8/pub?output=csv';
 const reviewContainer = document.getElementById('reviewContainer');
 const viewFeedbackBtn = document.getElementById('viewFeedbackBtn');
 const submitBtn = document.getElementById('submitBtn');
+
+
 
 async function fetchReviews() {
     try {
@@ -275,7 +279,9 @@ async function fetchReviews() {
         const rows = csvData.split('\n');
         const headers = rows[0].split(',');
 
-        for (let i = 1; i < rows.length; i++) {
+        reviewContainer.innerHTML = '';
+
+        for (let i = rows.length - 1; i > 0; i--) {
             const values = rows[i].split(',');
             if (values.length === headers.length) {
                 const reviewDiv = document.createElement('div');
@@ -293,13 +299,15 @@ async function fetchReviews() {
     }
 }
 
+
 viewFeedbackBtn.addEventListener('click', () => {
-    viewFeedbackBtn.textContent = 'Wait...'; // Change button text to "Wait"
-    viewFeedbackBtn.disabled = true; // Disable the button during fetching
-    reviewContainer.style.display = 'block'; // Show the feedback container
+    viewFeedbackBtn.textContent = 'Wait...';
+    viewFeedbackBtn.disabled = true;
+    reviewContainer.style.display = 'block';
+    
     fetchReviews().finally(() => {
-        viewFeedbackBtn.textContent = 'View Feedbacks'; // Change button text back to "View Feedbacks"
-        viewFeedbackBtn.disabled = false; // Enable the button after fetching
+        viewFeedbackBtn.textContent = 'View Feedbacks';
+        viewFeedbackBtn.disabled = false;
     });
 });
 
