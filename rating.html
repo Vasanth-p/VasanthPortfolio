@@ -285,16 +285,27 @@ async function fetchReviews() {
                 const reviews = results.data;
                 reviewContainer.innerHTML = '';
 
-                reviews.forEach(review => {
-                    const reviewDiv = document.createElement('div');
-                    reviewDiv.classList.add('review');
-                    let reviewContent = '';
-                    for (const key in review) {
-                        reviewContent += `<p><b>${key}:</b> ${review[key]}</p>`;
-                    }
-                    reviewDiv.innerHTML = reviewContent;
-                    reviewContainer.appendChild(reviewDiv);
-                });
+               reviews.forEach(review => {
+    const reviewDiv = document.createElement('div');
+    reviewDiv.classList.add('review');
+    let reviewContent = '';
+    
+    for (const key in review) {
+        if (key === 'Rating') {
+            if (review[key] === null) {
+                reviewContent += `<p><b>${key}:</b> </p>`; // Display empty field
+            } else {
+                reviewContent += `<p><b>${key}:</b> ${review[key]}</p>`;
+            }
+        } else {
+            reviewContent += `<p><b>${key}:</b> ${review[key]}</p>`;
+        }
+    }
+    
+    reviewDiv.innerHTML = reviewContent;
+    reviewContainer.appendChild(reviewDiv);
+});
+
             }
         });
     } catch (error) {
