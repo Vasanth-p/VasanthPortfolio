@@ -11,6 +11,7 @@
     <script src="https://kit.fontawesome.com/0a682b9dd5.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
     <style>
         /* Resetting default styles */
         * {
@@ -222,6 +223,7 @@
             }
         }
     </style>
+    
 </head>
 
 <body>
@@ -282,10 +284,10 @@ async function fetchReviews() {
             header: true,
             dynamicTyping: true,
             complete: function (results) {
-                const reviews = results.data;
+                const reviews = results.data.reverse(); // Reverse the order of reviews
                 reviewContainer.innerHTML = '';
 
-               reviews.forEach(review => {
+                reviews.forEach(review => {
     const reviewDiv = document.createElement('div');
     reviewDiv.classList.add('review');
     let reviewContent = '';
