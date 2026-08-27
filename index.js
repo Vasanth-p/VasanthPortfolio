@@ -62,18 +62,18 @@ const text = document.querySelector(".multiple-text");
 const textLoad = () => {
     setTimeout(() => {
 
-        text.textContent = "UI/UX Designer";
+        text.textContent = "Software Engineer";
     }, 0);
     setTimeout(() => {
-        text.textContent = "App Developer";
-    }, 1500);
+        text.textContent = "Enterprise Application Developer";
+    }, 2500);
     setTimeout(() => {
-        text.textContent = "Front-end Web Developer";
+        text.textContent = "Java Developer";
 
-    }, 3100);
+    }, 5000);
 }
 textLoad();
-setInterval(textLoad, 4600);
+setInterval(textLoad, 7500);
 
 
 //skill animation
@@ -102,9 +102,9 @@ ScrollReveal({
 });
 
 
-ScrollReveal().reveal('.project-title,.service-title,.description-about,.skills-title,.contact-title,.gallery-title,.education-title,hr,.hire-title', { origin: 'top' });
+ScrollReveal().reveal('.project-title,.service-title,.description-about,.skills-title,.contact-title,.gallery-title,.education-title,.experience-title,hr,.hire-title', { origin: 'top' });
 ScrollReveal().reveal('.img-about,.h6-head,.description-hire-button,.email,.gallery-img', { origin: 'right' });
-ScrollReveal().reveal('.srvc,.text,.edc', { origin: 'bottom' });
+ScrollReveal().reveal('.srvc,.text,.edc,.experience-card', { origin: 'bottom' });
 ScrollReveal().reveal('.h1-head,.hire-description,.name,.gallery-about', { origin: 'left' });
 
 ScrollReveal().reveal('.header-img', { scale: 1.7 });
@@ -120,6 +120,7 @@ ScrollReveal().reveal('.h1-head,.h6-head,.header-img', { delay: 3050, reset: tru
 var navbar = document.querySelector('#navbar');
 var about = document.querySelector('#about');
 var skills = document.querySelector('#skills');
+var experience = document.querySelector('#experience');
 var hire = document.querySelector('#hire');
 var gallery = document.querySelector('#gallery');
 var footer = document.querySelector('#FOOTER');
@@ -135,6 +136,7 @@ function changeTheme() {
     navbar.classList.toggle('dark');
     about.classList.toggle('dark')
     skills.classList.toggle('dark')
+    experience.classList.toggle('dark')
     hire.classList.toggle('dark')
     gallery.classList.toggle('dark')
     footer.classList.toggle('dark')
@@ -174,6 +176,105 @@ window.addEventListener("scroll", function () {
 
 const notificationSound = new Audio("Notification.mp3");
 
+const resumeButton = document.getElementById("resumeButton");
+const resumeModal = document.getElementById("resumeModal");
+const resumeModalClose = document.getElementById("resumeModalClose");
+const resumeCancel = document.getElementById("resumeCancel");
+const resumeConfirm = document.getElementById("resumeConfirm");
+const resumeRequesterName = document.getElementById("resumeRequesterName");
+const resumeReason = document.getElementById("resumeReason");
+const resumeReasonError = document.getElementById("resumeReasonError");
+const resumeFilePath = "my_image/21cse062.pdf";
+const resumeRequestScriptURL = "https://script.google.com/macros/s/AKfycbxyGTZDfcjmCSVctas_vIUoECmMdR8onKMJswEsrivHynLeC2PUgKd8oE0T51XrdNemDg/exec";
+
+function isResumeSheetConfigured() {
+    return resumeRequestScriptURL !== "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
+}
+
+function triggerResumeDownload() {
+    const downloadLink = document.createElement("a");
+    downloadLink.href = resumeFilePath;
+    downloadLink.download = "Vasanth_P_Resume.pdf";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    downloadLink.remove();
+}
+
+function openResumeModal() {
+    resumeRequesterName.value = "";
+    resumeReason.value = "";
+    resumeReasonError.style.display = "none";
+    resumeModal.style.display = "flex";
+    resumeRequesterName.focus();
+}
+
+function closeResumeModal() {
+    resumeModal.style.display = "none";
+}
+
+if (resumeButton) {
+    resumeButton.addEventListener("click", openResumeModal);
+}
+
+if (resumeModalClose) {
+    resumeModalClose.addEventListener("click", closeResumeModal);
+}
+
+if (resumeCancel) {
+    resumeCancel.addEventListener("click", closeResumeModal);
+}
+
+if (resumeModal) {
+    resumeModal.addEventListener("click", function (event) {
+        if (event.target === resumeModal) {
+            closeResumeModal();
+        }
+    });
+}
+
+if (resumeConfirm) {
+    resumeConfirm.addEventListener("click", async function () {
+        const requesterName = resumeRequesterName.value.trim();
+        const reason = resumeReason.value.trim();
+
+        if (!requesterName || !reason) {
+            resumeReasonError.style.display = "block";
+            if (!requesterName) {
+                resumeRequesterName.focus();
+            } else {
+                resumeReason.focus();
+            }
+            return;
+        }
+
+        const requestedAt = new Date().toLocaleString();
+        const formData = new FormData();
+        formData.append("RequesterName", requesterName);
+        formData.append("Reason", reason);
+
+        try {
+            if (!isResumeSheetConfigured()) {
+                throw new Error("Resume request sheet is not configured yet.");
+            }
+
+            const response = await fetch(resumeRequestScriptURL, {
+                method: "POST",
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to submit resume request.");
+            }
+
+            triggerResumeDownload();
+            closeResumeModal();
+        } catch (error) {
+            alert("Resume request sheet is not active yet. Add your Google Apps Script web app URL in index.js to enable it.");
+            console.error("Resume request submit failed:", error);
+        }
+    });
+}
+
 document.getElementById("submit").addEventListener("click", function() {
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
@@ -186,7 +287,7 @@ document.getElementById("submit").addEventListener("click", function() {
     }
 
     const subject = "New Message from " + name;
-    const mailtoLink = "mailto:21cse062.vasanth@gmail.com" +
+    const mailtoLink = "mailto:Vasanthpalanichamy18@gamil.com" +
                        "?subject=" + encodeURIComponent(subject) +
                        "&body=" + encodeURIComponent(message);
 
