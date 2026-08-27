@@ -74,10 +74,41 @@ html::-webkit-scrollbar-track {
         padding: 7px !important;
     }
 
+    #about {
+        padding: 2rem 0 1.5rem;
+    }
+
+    #about > br {
+        display: none;
+    }
+
+    #skills .col-6 {
+        width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    #skills .gx-5 {
+        --bs-gutter-x: 1rem;
+    }
+
+    #skills .d-flex {
+        gap: 0.75rem;
+    }
+
+    #skills h6,
+    #skills p {
+        font-size: 0.95rem;
+    }
+
     .img-about {
-        width: 100% !important;
+        width: min(100%, 340px) !important;
         height: auto;
-       
+        max-height: 62vh;
+        aspect-ratio: auto;
+        object-fit: contain;
+        object-position: center top;
     }
 
     .navbar {
