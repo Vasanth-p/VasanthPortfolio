@@ -293,6 +293,9 @@ async function fetchReviews() {
     let reviewContent = '';
     
     for (const key in review) {
+                if (key === 'timestamp') {
+            continue;
+        }
         if (key === 'Rating') {
             if (review[key] === null) {
                 reviewContent += `<p><b>${key}:</b> </p>`; // Display empty field
