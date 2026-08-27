@@ -287,6 +287,22 @@ html::-webkit-scrollbar-track {
     background-color: #F2F2F2;
 }
 
+#experience {
+    background-color: #fff;
+}
+
+.experience-card {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.experience-list {
+    padding-left: 1.2rem;
+}
+
+.experience-list li {
+    margin-bottom: 0.75rem;
+}
+
 #hire .btn {
     width: 160px;
     height: 60px;
@@ -335,6 +351,7 @@ html::-webkit-scrollbar-track {
 #skills h2,
 #contact h2,
 #hire h2,
+#experience h2,
 #services h2,
 #projects h2,
 #gallery h1 {
@@ -375,6 +392,7 @@ input[type=number]:focus,
 /* darkmode class */
 #about.dark,
 #skills.dark,
+#experience.dark,
 #hire.dark,
 #gallery.dark,
 #FOOTER.dark {
@@ -394,6 +412,11 @@ input[type=number]:focus,
 
 #navbar.dark {
     color: white !important;
+}
+
+#experience.dark .experience-card {
+    background-color: var(--bg-secondary-dark) !important;
+    border-color: transparent !important;
 }
 
 /* dark light toggle */
@@ -484,6 +507,84 @@ input[type=number]:focus,
     padding: 5px;
 }
 
+.resume-modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1100;
+    padding: 20px;
+}
+
+.resume-modal-card {
+    position: relative;
+    width: min(100%, 460px);
+    background-color: #272a2d;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.resume-modal-text {
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 12px;
+}
+
+.resume-modal textarea {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.resume-modal input {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.resume-modal textarea::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.resume-modal input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.resume-modal textarea:focus {
+    border-color: #48B14D !important;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: white;
+}
+
+.resume-modal input:focus {
+    border-color: #48B14D !important;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: white;
+}
+
+.resume-modal-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.resume-modal-error {
+    color: #ff7d7d;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: left;
+}
+
 
 /* Media query for screens up to 768px wide */
 @media (max-width: 768px) {
@@ -506,6 +607,10 @@ input[type=number]:focus,
         font-size: 20px;
         top: 5px;
         right: 5px;
+    }
+
+    .resume-modal-card {
+        padding: 20px;
     }
 }
 
